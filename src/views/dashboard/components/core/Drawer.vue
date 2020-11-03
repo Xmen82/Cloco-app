@@ -91,7 +91,7 @@ export default {
         text: "List"
       },
       {
-        to: "/",
+        to: "/login",
         icon: "mdi-trophy",
         text: "Login"
       },

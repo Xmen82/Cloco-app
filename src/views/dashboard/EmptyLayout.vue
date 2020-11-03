@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <dashboard-core-app-bar />
-
-    <dashboard-core-view />
+    <view-empty />
   </v-app>
 </template>
 
@@ -11,8 +9,7 @@ export default {
   name: "DashboardIndex",
 
   components: {
-    DashboardCoreAppBar: () => import("./components/core/AppBar"),
-    DashboardCoreView: () => import("./components/core/View")
+    ViewEmpty: () => import("./components/core/ViewEmpty")
   },
 
   data: () => ({

@@ -1,7 +1,7 @@
 <template>
   <v-container id="user-profile" fluid tag="section">
     <v-row justify="center">
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="4">
         <base-material-card>
           <template v-slot:heading>
             <div class="display-2 font-weight-light">
