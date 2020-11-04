@@ -12,7 +12,7 @@
   padding: 5px 10px;
 }
 .button-color{
-  background-color: #798093;
+  background-color: #798093  !important;
   color: white;
 }
 .app-bar{
