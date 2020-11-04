@@ -10,7 +10,7 @@
     app
     width="260"
     v-bind="$attrs"
-    class="teal accent-3"
+    class="background-common accent-3"
   >
     <v-divider class="mb-1" />
 
