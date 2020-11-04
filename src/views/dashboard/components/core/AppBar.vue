@@ -3,31 +3,23 @@
     id="app-bar"
     absolute
     app
-    color="transparent"
     flat
-    height="75"
-    class="teal accent-3"
+    class="background-common accent-3 text-center app-bar"
   >
-    <v-btn class="mr-3" elevation="1" fab small @click="setDrawer(!drawer)">
-      <v-icon v-if="value">
-        mdi-view-quilt
-      </v-icon>
-
-      <v-icon v-else>
-        mdi-dots-vertical
-      </v-icon>
-    </v-btn>
-
-    <v-toolbar-title
-      class="hidden-sm-and-down font-weight-light"
-      v-text="$route.name"
-    />
-
-    <v-spacer />
-
-    <v-btn class="ml-2" min-width="0" text to="/pages/user">
-      <v-icon>mdi-account</v-icon>
-    </v-btn>
+    <v-row>
+      <v-col cols="12" class="text-center background-common">
+        <v-toolbar-title class="hidden-sm-and-down font-weight-light">
+          ヘッダー（固定）
+        </v-toolbar-title>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" class="text-left">
+        <v-toolbar-title class="hidden-sm-and-down font-weight-light">
+          クライアント管理
+        </v-toolbar-title>
+      </v-col>
+    </v-row>
   </v-app-bar>
 </template>
 

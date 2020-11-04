@@ -2,7 +2,6 @@
   <v-navigation-drawer
     id="core-navigation-drawer"
     v-model="drawer"
-    dark
     :expand-on-hover="expandOnHover"
     :right="$vuetify.rtl"
     :src="barImage"
@@ -12,60 +11,35 @@
     v-bind="$attrs"
     class="background-common accent-3"
   >
-    <v-divider class="mb-1" />
-
-    <v-list dense nav>
-      <v-list-item>
-        <v-list-item-avatar class="align-self-center" color="white" contain>
-          <v-img
-            src="https://demos.creative-tim.com/vuetify-material-dashboard/favicon.ico"
-            max-height="30"
-          />
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title class="display-1" v-text="profile.title" />
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-
-    <v-divider class="mb-2" />
-    <v-list expand nav>
-      <div v-for="(link, i) in links" v-bind:key="i">
-        <v-list-item v-if="!link.subLinks" link :to="link.to">
-          <v-list-item-icon>
-            <v-icon>{{ link.icon }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title>{{ link.text }}</v-list-item-title>
-          </v-list-item-content>
+    <v-card class="mx-auto" width="300" style="margin-top:0px">
+      <v-list>
+        <v-list-item link>
+          <v-list-item-title>ログ</v-list-item-title>
         </v-list-item>
-
-        <v-list-group v-else no-action>
+        <v-list-item link>
+          <v-list-item-title>メニュー01 </v-list-item-title>
+        </v-list-item>
+        <v-list-group :value="true">
           <template v-slot:activator>
-            <v-list-item class="pl-0">
-              <v-list-item-icon>
-                <v-icon>{{ link.icon }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>{{ link.text }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
+            <v-list-item-title>メニュー02 </v-list-item-title>
           </template>
 
-          <v-list-item
-            v-for="sublink in link.subLinks"
-            :key="sublink.text"
-            :to="sublink.to"
-            link
-          >
-            <v-list-item-content>
-              <v-list-item-subtitle>{{ sublink.text }}</v-list-item-subtitle>
-            </v-list-item-content>
+          <v-list-item link>
+            <v-list-item-title class="pl-5">サブメニュー01</v-list-item-title>
+          </v-list-item>
+          <v-list-item link>
+            <v-list-item-title class="pl-5 highlighted" active-class="highlighted">サブメニュー02</v-list-item-title>
+          </v-list-item>
+          <v-list-item link>
+            <v-list-item-title class="pl-5">サブメニュー03</v-list-item-title>
           </v-list-item>
         </v-list-group>
-      </div>
-    </v-list>
+
+        <v-list-item link>
+          <v-list-item-title>メニュー03</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-card>
   </v-navigation-drawer>
 </template>
 

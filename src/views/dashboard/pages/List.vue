@@ -1,206 +1,164 @@
 <template>
-  <v-container>
+  <div class="pa-5">
     <v-row>
-      <v-col cols="12" class="text-right">
-        <v-btn tile color="success" right @click="openPopUp">
+      <v-col cols="6" class="text-right">
+        <v-switch label="契約囚虜を含む" color="button-color" />
+      </v-col>
+      <v-col cols="6" class="text-right">
+        <v-btn tile dark color="button-color" right @click="openPopUp">
           <v-icon left>
             mdi-pencil
           </v-icon>
-          New Item
+          クライアント追加
         </v-btn>
       </v-col>
     </v-row>
     <v-data-table
       :headers="headers"
       :items="desserts"
-      :items-per-page="15"
+      :items-per-page="9"
       class="elevation-1"
-    ></v-data-table>
+      :header-props="{ 'sort-icon': 'mdi-arrow-down-bold' }"
+    >
+      <template v-slot:[`item.calories`]="{ item }">
+        <v-tooltip bottom class="background-common">
+          <template v-slot:activator="{ on }">
+            <v-chip v-on="on" class="span-without-color">{{
+              item.calories
+            }}</v-chip>
+          </template>
+          <span>アカウント数推移 </span>
+        </v-tooltip>
+      </template>
+    </v-data-table>
     <v-row justify="center">
-      <v-dialog v-model="dialog" persistent max-width="600px">
-        <v-card>
-          <v-toolbar>
-            <v-toolbar-title>Details</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-              <v-btn icon @click="dialog = false">
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
-            </v-toolbar-items>
-          </v-toolbar>
-          <v-card-text>
-            <v-container>
-              <v-row>
-                <v-col cols="12" sm="6" md="4">
-                  <v-text-field
-                    label="Legal first name*"
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
-                  <v-text-field
-                    label="Legal middle name"
-                    hint="example of helper text only on focus"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
-                  <v-text-field
-                    label="Legal last name*"
-                    hint="example of persistent helper text"
-                    persistent-hint
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12">
-                  <v-text-field label="Email*" required></v-text-field>
-                </v-col>
-                <v-col cols="12">
-                  <v-text-field
-                    label="Password*"
-                    type="password"
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6">
-                  <v-select
-                    :items="['0-17', '18-29', '30-54', '54+']"
-                    label="Age*"
-                    required
-                  ></v-select>
-                </v-col>
-                <v-col cols="12" sm="6">
-                  <v-autocomplete
-                    :items="[
-                      'Skiing',
-                      'Ice hockey',
-                      'Soccer',
-                      'Basketball',
-                      'Hockey',
-                      'Reading',
-                      'Writing',
-                      'Coding',
-                      'Basejump'
-                    ]"
-                    label="Interests"
-                    multiple
-                  ></v-autocomplete>
-                </v-col>
-              </v-row>
-            </v-container>
-            <small>*indicates required field</small>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn @click="dialog = false">
-              Close
-            </v-btn>
-            <v-btn color="primary" @click="dialog = false">
-              Save
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+      <details-dialog :isOpen="dialog" @closePopup="dialog = false" />
     </v-row>
-  </v-container>
+  </div>
 </template>
 <script>
+import DetailsDialog from "../components/dialogs/DetailsDialog";
 export default {
+  components: {
+    DetailsDialog
+  },
   data() {
     return {
       dialog: false,
       headers: [
         {
-          text: "Dessert (100g serving)",
+          text: "クライアント",
           align: "start",
           sortable: false,
-          value: "name"
+          value: "name",
+          class: "table-header-color"
         },
-        { text: "Calories", value: "calories" },
-        { text: "Fat (g)", value: "fat" },
-        { text: "Carbs (g)", value: "carbs" },
-        { text: "Protein (g)", value: "protein" },
-        { text: "Iron (%)", value: "iron" }
+        { text: "ドメイン", value: "calories", class: "table-header-color" },
+        { text: "契約ログイン数", value: "fat", class: "table-header-color" },
+        { text: "当月ログイン数", value: "carbs", class: "table-header-color" },
+        {
+          text: "前月ログイン数",
+          value: "protein",
+          class: "table-header-color"
+        },
+        { text: "状態", value: "iron", class: "table-header-color" }
       ],
       desserts: [
         {
-          name: "Frozen Yogurt",
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: "1%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         },
         {
-          name: "Ice cream sandwich",
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: "1%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         },
         {
-          name: "Eclair",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: "7%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         },
         {
-          name: "Cupcake",
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: "8%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         },
         {
-          name: "Gingerbread",
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: "16%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         },
         {
-          name: "Jelly bean",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: "0%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         },
         {
-          name: "Lollipop",
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: "2%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         },
         {
-          name: "Honeycomb",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: "45%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         },
         {
-          name: "Donut",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: "22%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         },
         {
-          name: "KitKat",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: "6%"
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
+        },
+        {
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
+        },
+        {
+          name: "検索",
+          calories: "xxxxxxxxxxxxxxxxxxxxxxx",
+          fat: "999,999",
+          carbs: "999,999",
+          protein: "999,999",
+          iron: "終了"
         }
       ]
     };

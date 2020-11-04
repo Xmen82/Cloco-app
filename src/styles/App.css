@@ -1,0 +1,48 @@
+
+.background-common {
+  background-color: #8ca36a !important;
+}
+.text-field-color .v-input__slot{
+  background-color: #8ca36a !important;
+}
+.v-text-field__details{
+  display: none;
+}
+.row-control{
+  padding: 5px 10px;
+}
+.button-color{
+  background-color: #798093;
+  color: white;
+}
+.app-bar{
+  height: 50px !important;
+}
+.app-bar .v-toolbar__content{
+  display: block;
+}
+.table-header-color{
+  background-color: #d3d7e2;
+  font-size: 12px !important;
+  font-weight: bolder !important;
+}
+.v-data-table > .v-data-table__wrapper > table {
+  border-spacing: 0.2rem 0 !important;
+}
+
+.highlighted{
+  color: #4caf50 !important;
+  caret-color: #4caf50 !important;
+}
+.v-data-table > .v-data-table__wrapper > table tr:hover:not(.v-table__expanded__content) {
+  background: #dbeef3 !important;
+}
+.span-without-color{
+  background:transparent!important;
+  border-radius:0px!important;
+  width: 100%;
+}
+
+.v-tooltip__content {
+  background-color: #8ca36a !important;
+}

@@ -1,11 +1,10 @@
 <template>
-  <v-footer id="dashboard-core-footer" class="teal accent-3">
+  <v-footer id="dashboard-core-footer" class="background-common accent-3">
     <v-container>
       <v-row align="center" no-gutters>
-        <v-spacer class="hidden-sm-and-down" />
-        <v-col cols="12" md="auto">
-          <div class="body-1 font-weight-light pt-6 pt-md-0 text-center">
-            &copy; 2020, <a href="#">Cloco</a> for a better web.
+        <v-col cols="12" class="text-center">
+          <div class="body-1 font-weight-light pt-6 pt-md-0">
+            Cpoyright&copy; 2020, 契約囚虜を含む
           </div>
         </v-col>
       </v-row>
